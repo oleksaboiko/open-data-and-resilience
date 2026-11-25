@@ -1,0 +1,47 @@
+name: Validate and publish map
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install GIS validation dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-gdal python3-numpy python3-pyproj python3-shapely
+      - name: Check application and opening hours
+        run: |
+          node --check site/app.js
+          node --test tests/hours.test.mjs
+      - name: Test routing and validate published datasets
+        run: |
+          /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+          /usr/bin/python3 scripts/validate_data.py
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    needs: validate
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy map
+        id: deployment
+        uses: actions/deploy-pages@v4

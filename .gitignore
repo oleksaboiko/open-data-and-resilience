@@ -1,0 +1,13 @@
+*.gpkg
+*.tif
+*.tiff
+*.pptx
+query_poi.json
+.venv/
+__pycache__/
+node_modules/
+.DS_Store
+test-results/
+*.log
+
+!site/data/population-clipped.tif

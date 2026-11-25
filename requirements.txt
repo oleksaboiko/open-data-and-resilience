@@ -1,0 +1,6 @@
+# GDAL must match the system libgdal version (Ubuntu: python3-gdal).
+# The supplied environment already provides these packages.
+GDAL>=3.6,<4
+numpy>=1.24,<3
+pyproj>=3.4,<4
+shapely>=2.0,<3
