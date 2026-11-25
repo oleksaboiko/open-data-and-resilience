@@ -1,6 +1,6 @@
 # Kyiv resilience map · Карта стійкості Києва
 
-An interactive, bilingual map of Kyiv resilience facilities, their equipment and published opening hours, modeled 15-minute child-paced walking catchments, and WorldPop population. Built for the FORWARD presentation supplied by Oleksii Boiko.
+An interactive, trilingual map of Kyiv resilience facilities, their equipment and published opening hours, modeled 15-minute child-paced walking catchments, and WorldPop population. Built for the FORWARD presentation supplied by Oleksii Boiko.
 
 **Website:** https://oleksaboiko.github.io/open-data-and-resilience/
 
@@ -12,8 +12,8 @@ The site runs entirely on GitHub Pages. No API key, account or routing server is
 - Search by name/address, district filter, equipment filter and a selector for every available scalar attribute.
 - Open/closed/unknown status based on recorded hours in **Europe/Kyiv**, updated every minute. Nine vague schedules remain unknown. Register status and schedule state are distinct from live availability.
 - Network-based 15-minute polygons at a configurable **3 km/h** child walking assumption, with partial road edges and entrance-to-road distance included in the 750 m budget.
-- Population heatmap using the supplied **WorldPop 2025** raster at its native 3 arc-second grid (nominally 100 m). No 20 m upsampling or artificial increase in demographic precision.
-- Ukrainian/English interface, mobile layout, geolocation, facility details and filtered GeoJSON downloads.
+- Blue population heatmap using the supplied **WorldPop 2025** raster at its native 3 arc-second grid (nominally 100 m). No 20 m upsampling or artificial increase in demographic precision.
+- Ukrainian/English/German interface, mobile layout, geolocation, facility details and filtered GeoJSON downloads.
 - Reproducible Python data preparation and downloadable provenance/assumption metadata.
 
 ## Run locally

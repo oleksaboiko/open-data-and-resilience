@@ -13,12 +13,12 @@
 <body>
   <a class="skip-link" href="#search" data-i18n="skip">До пошуку пунктів</a>
   <header class="topbar">
-    <a class="brand" href="./" aria-label="Карта стійкості"><img src="favicon.svg" alt="" width="38" height="38"><span><strong data-i18n="brand">Карта стійкості</strong><small>FORWARD · KYIV</small></span></a>
+    <a class="brand" href="./" data-i18n-aria="brand" aria-label="Карта стійкості"><img src="favicon.svg" alt="" width="38" height="38"><span><strong data-i18n="brand">Карта стійкості</strong><small>FORWARD · KYIV</small></span></a>
     <span class="header-caption" data-i18n="headerCaption">Відкриті дані для стійких громад</span>
-    <nav aria-label="Сервіс"><button id="about-button" class="quiet-button" data-i18n="about">Про дані</button><div class="languages" aria-label="Language"><button data-lang="uk" aria-pressed="true">УКР</button><button data-lang="en" aria-pressed="false">EN</button></div></nav>
+    <nav aria-label="Сервіс" data-i18n-aria="serviceNavigation"><button id="about-button" class="quiet-button" data-i18n="about">Про дані</button><div class="languages" aria-label="Language" data-i18n-aria="language"><button data-lang="uk" lang="uk" aria-label="Українська" aria-pressed="true">УКР</button><button data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button><button data-lang="de" lang="de" aria-label="Deutsch" aria-pressed="false">DE</button></div></nav>
   </header>
   <main class="workspace">
-    <aside class="sidebar" aria-label="Пошук та фільтри">
+    <aside class="sidebar" aria-label="Пошук та фільтри" data-i18n-aria="searchFilters">
       <button id="close-sidebar" class="close-button" aria-label="Закрити">×</button>
       <div class="intro"><div class="eyebrow" data-i18n="eyebrow">КИЇВ · ПУНКТИ НЕЗЛАМНОСТІ</div><h1 data-i18n="heading">Підтримка поруч.</h1><p data-i18n="intro">Знайдіть місце для тепла, зв’язку та підзарядки.</p></div>
       <div class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><label class="sr-only" for="search" data-i18n="searchLabel">Назва або адреса</label><input id="search" type="search" autocomplete="off" placeholder="Назва або адреса" data-placeholder="searchLabel"></div>
@@ -33,22 +33,22 @@
         <label class="layer-row"><span class="layer-symbol heat-symbol"></span><span><strong data-i18n="population">Населення</strong><small data-i18n="popDetail">WorldPop 2025 · сітка ~100 м</small></span><input id="population-layer" type="checkbox" role="switch" checked aria-label="Населення"></label>
         <label class="layer-row"><span class="layer-symbol walk-symbol"></span><span><strong data-i18n="walk">15 хвилин пішки</strong><small data-i18n="walkDetail">Дитячий темп · 3 км/год</small></span><input id="isochrone-layer" type="checkbox" role="switch" aria-label="15 хвилин пішки"></label>
       </div>
-      <section class="results-section" aria-label="Пункти"><div class="section-title"><h2 id="result-count" aria-live="polite">Завантаження…</h2><span class="result-hint" data-i18n="resultsHint">за фільтрами</span></div><div id="facility-list"></div><button id="show-more" class="secondary-button" hidden data-i18n="showMore">Показати ще</button></section>
+      <section class="results-section" aria-label="Пункти" data-i18n-aria="facilityResults"><div class="section-title"><h2 id="result-count" aria-live="polite">Завантаження…</h2><span class="result-hint" data-i18n="resultsHint">за фільтрами</span></div><div id="facility-list"></div><button id="show-more" class="secondary-button" hidden data-i18n="showMore">Показати ще</button></section>
       <footer class="sidebar-footer"><button id="download-button" class="text-button" data-i18n="download">Завантажити дані</button><a href="https://github.com/oleksaboiko/open-data-and-resilience" target="_blank" rel="noopener">GitHub</a></footer>
     </aside>
-    <section class="map-area" aria-label="Карта Києва">
-      <div id="map" role="region" aria-label="Карта пунктів незламності Києва"></div>
+    <section class="map-area" aria-label="Карта Києва" data-i18n-aria="mapLabel">
+      <div id="map" role="region" aria-label="Карта пунктів незламності Києва" data-i18n-aria="mapLabel"></div>
       <div class="map-heading"><span class="live-label"><span></span><span data-i18n="kyivTime">Київський час</span></span><time id="clock"></time><small data-i18n="scheduleNote">Стан за графіком, без перевірки на місці</small></div>
       <div class="map-tools"><button id="fit-map" class="map-button" data-i18n="fit">Увесь Київ</button><button id="locate" class="map-button" data-i18n="locate">Моє місце</button></div>
       <div id="notice" class="notice" role="status" hidden></div>
       <div id="loading" class="loading-card" role="status"><span class="spinner"></span><span data-i18n="loading">Завантаження карти та даних…</span></div>
       <div class="map-bottom"><div class="legend"><strong data-i18n="legendTitle">Пункти за графіком</strong><div class="legend-items"><span><i class="dot open"></i><span data-i18n="openShort">Відкрито</span></span><span><i class="dot closed"></i><span data-i18n="closedShort">Зачинено</span></span><span><i class="dot unknown"></i><span data-i18n="unknownShort">Невідомо</span></span><span id="inactive-legend" hidden><i class="dot inactive"></i><span data-i18n="inactive">Неактивний</span></span></div><div id="heat-legend"><div class="heat-ramp"></div><div class="heat-labels"><span data-i18n="less">Менше населення</span><span data-i18n="more">Більше</span></div><small data-i18n="heatNote">Відносна інтенсивність; залежить від масштабу</small></div><div id="walk-legend" hidden><i class="walk-swatch"></i><span data-i18n="walkLegend">Досяжні вулиці + коридор 35 м</span></div></div><button id="mobile-filters" class="primary-button" data-i18n="filters">Пошук і фільтри</button></div>
-      <section id="detail" class="detail-card" hidden aria-label="Відомості про пункт"><button id="close-detail" class="close-button" aria-label="Закрити">×</button><div id="detail-content"></div></section>
+      <section id="detail" class="detail-card" hidden aria-label="Відомості про пункт" data-i18n-aria="facilityDetails"><button id="close-detail" class="close-button" aria-label="Закрити">×</button><div id="detail-content"></div></section>
     </section>
   </main>
   <dialog id="about-dialog"><button class="close-button" data-close aria-label="Закрити">×</button><div class="eyebrow">FORWARD · OPEN DATA</div><h2 data-i18n="aboutTitle">Як читати цю карту</h2><div id="about-content"></div></dialog>
   <dialog id="download-dialog"><button class="close-button" data-close aria-label="Закрити">×</button><h2 data-i18n="download">Завантажити дані</h2><p data-i18n="downloadHelp">Пункти та ізохрони експортуються з поточними фільтрами. Населення охоплює всю територію аналізу.</p><div class="download-links"><button class="secondary-button" id="export-facilities" data-i18n="exportFacilities">Пункти · GeoJSON</button><button class="secondary-button" id="export-isochrones" data-i18n="exportIsochrones">Ізохрони · GeoJSON</button><a class="secondary-button" href="data/population.json" download data-i18n="exportPopulation">Населення · JSON</a><a class="secondary-button" href="data/population-clipped.tif" download>WorldPop 2025 · GeoTIFF</a><a class="secondary-button" href="data/metadata.json" download data-i18n="exportMetadata">Метадані · JSON</a></div></dialog>
-  <noscript><div class="noscript">Увімкніть JavaScript для інтерактивної карти. Enable JavaScript to use the map.</div></noscript>
+  <noscript><div class="noscript">Увімкніть JavaScript для інтерактивної карти. Enable JavaScript to use the map. Aktivieren Sie JavaScript, um die Karte zu verwenden.</div></noscript>
   <script src="vendor/leaflet.js"></script><script src="vendor/leaflet-heat.js"></script><script type="module" src="app.js"></script>
 </body>
 </html>
